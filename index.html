@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessBoard</title>
+    <style>
+        table{
+            
+            border: 5px solid black;
+            border-collapse:collapse ;
+            transform: translate(600px);
+            
+        }
+        td {
+            width: 40px;
+            height: 40px;
+        }
+        .button1
+        {
+            background-color: yellow;
+            padding: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .button2{
+            background-color: blue;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    Enter number of rows :<input type="number" name="rows" id="rows"/><br/>
+    Enter number of coloum :<input type="number" name="col" id="col"/><br/>
+    Which color are you willing to play (White or Black) :<input type="txt" name="color" id="color"/><br/>
+    <button class="button2 button1" onClick="createTable()">SUBMIT</button>
+    <div style="display:flex">
+        <div id="main"></div>
+        <div id="subdiv"></div>
+    </div> 
+    <script>
+        function createTable()
+        {
+            var row = document.getElementById("rows").value;
+            var col = document.getElementById("col").value;
+            var color = document.getElementById("color").value
+            if((row>26)||(col>26)) alert("Please enter value less than 26");
+            else
+            {
+                console.log(row + col);
+                var x= "<table>";
+                var flag=0;
+                for( var i=0; i<row ;i++)
+                {
+                    x+="<tr>";
+                    for(var j=0; j<col ; j++)
+                    {
+                        if((i+j)%2==0) x +="<td style='background-color:green;'></td>";
+                        else x +="<td style='background-color:white;'></td>";
+                    }
+                    
+                    x+="</tr>";
+                }
+                x+="</table>";
+                console.log(x);
+            
+            x+="<table style='border:0; text-align:center;'> <tr>";
+            for(var i=0;i<col ;i++)
+            {
+                
+                x+="<td>"+String.fromCharCode(i+65)+"</td>";
+                
+            }
+            x+="</tr> </table>";
+            document.getElementById("main").innerHTML=x;
+
+            y="<table style= ' text-align:center'>";
+                for(var i=1;i<=row;i++)
+                        {
+                            y+="<tr><td>"+i+"</td></tr>";
+                    
+                        }  
+                      
+                        y+="</table>";
+                        document.getElementById("subdiv").innerHTML=y;
+                    console.log(row + " " + col);
+            var x= "<table class='table1'>";
+            if(color=='black')
+            {
+                for( var i=0; i<row ;i++)
+                {
+                    x+="<tr>";
+                    for(var j=0; j<col ; j++)
+                    {
+                        if((i+j)%2==0) x +="<td style='background-color:green;'></td>";
+                        else x +="<td style='background-color:white;'></td>";
+                    }
+                    x+="</tr>";
+                }
+                x+="</table>";
+                console.log(x);
+            x+="<table style='border:0; text-align:center;'> <tr>";
+            for(var i=0;i<col ;i++)
+            {
+                x+="<td>"+String.fromCharCode(i+65)+"</td>";
+            }
+            x+="</tr> </table>";
+            document.getElementById("main").innerHTML=x;
+                y="<table style= 'text-align:center;border:0;'>";
+                for(var i=1;i<=row;i++)
+                {
+                    y+="<tr><td>"+i+"</td></tr>";
+                }  
+                y+="</table>";
+                document.getElementById("subdiv").innerHTML=y;
+            }
+            else if(color=='white')
+            {
+                for( var i=0; i<row ;i++)
+                {
+                    x+="<tr>";
+                    for(var j=0; j<col ; j++)
+                    {
+                        if((i+j)%2==0) x +="<td style='background-color:white;'></td>";
+                        else x +="<td style='background-color:green;'></td>";
+                    }
+                    x+="</tr>";
+                }
+                x+="</table>";
+                console.log(x);
+            x+="<table style='border:0; text-align:center;'> <tr>";
+            for(var i=0;i<col ;i++)
+            {
+                x+="<td>"+String.fromCharCode(i+65)+"</td>";
+            }
+            x+="</tr> </table>";
+            document.getElementById("main").innerHTML=x;
+                y="<table style= 'text-align:center;border:0;'>";
+                for(var i=row;i>0;i--)
+                {
+                    y+="<tr><td>"+i+"</td></tr>";
+                }  
+                y+="</table>";
+                document.getElementById("subdiv").innerHTML=y;
+            }
+                
+            }
+        }
+</script>
+
+</body>
+</html>
